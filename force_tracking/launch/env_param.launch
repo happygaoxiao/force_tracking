@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<!-- env_param launch
+
+  Usage:
+    env_param.launch
+-->
+
+<launch>
+
+ <rosparam command="load" file="$(find force_tracking)/config/env_param.yaml" />
+
+</launch>

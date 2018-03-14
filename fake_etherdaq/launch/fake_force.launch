@@ -1,0 +1,9 @@
+<launch>
+	<node
+		pkg="fake_force"
+		type="fake_force"
+		name="fake_force"
+
+	/>
+
+</launch>

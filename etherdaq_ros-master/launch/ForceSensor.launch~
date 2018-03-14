@@ -1,0 +1,9 @@
+<launch>
+	<node
+		pkg="optoforce_etherdaq_driver"
+		type="etherdaq_node"
+		name="etherdaq_node"
+		args="--address 192.168.1.182 --rate 1000 --filter 4"
+	/>
+
+</launch>

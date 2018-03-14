@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <property name="pi" value="3.14159265"/>
+
+    <xacro:macro name="optoforce" params="prefix">
+        <!-- opto force sensor  -->
+        <link name="${prefix}optoforce_link">
+            <visual>
+                <geometry>
+                    <mesh filename="package://force_tracking/description/sensor/visual/optoforce.dae"/>
+                </geometry>
+                <material name="LightGrey">
+                    <color rgba="0.7 0.7 0.7 1.0"/>
+                </material>
+            </visual>
+            <collision>
+                <geometry>
+                    <mesh filename="package://force_tracking/description/sensor/collision/optoforce.stl"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="${prefix}optoforce_joint" type="fixed">
+            <parent link="${prefix}ee_link"/>
+            <child link="${prefix}optoforce_link"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 ${-pi/2} ${pi}"/>
+            <axis xyz="0 0 1"/>
+        </joint>
+
+    </xacro:macro>
+</robot>

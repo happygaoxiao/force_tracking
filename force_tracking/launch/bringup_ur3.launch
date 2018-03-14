@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<!-- ur3 launch
+
+  Usage:
+    bringup_ur3.launch limited:=<value>
+-->
+
+<launch>
+
+  <arg name="limited" default="false"/>
+  <arg name="prefix" default=""/>
+
+  <!-- robot model -->
+  <param unless="$(arg limited)" name="robot_description" command="$(find xacro)/xacro.py '$(find force_tracking)/robot/ur3_robot.urdf.xacro'" />
+  <param if="$(arg limited)" name="robot_description" command="$(find xacro)/xacro.py '$(find force_tracking)/robot/ur3_limited_robot.urdf.xacro'" />
+
+<!-- env param -->
+<include file="$(find force_tracking)/launch/env_param.launch"/>
+
+  <!-- launch the  ur3 -->
+  <include file="$(find ur_modern_driver)/launch/ur3_bringup.launch">
+    <arg name="robot_ip" value="192.168.12.179"/>
+    <arg name="port" default="30001"/>
+    <arg name="prefix" default="$(arg prefix)" />
+    <arg name="limited"  value="$(arg limited)"/>
+  </include>
+
+  <!-- record param -->
+  <param name="record_name" type="str" value="$(find force_tracking)/rosbag/record.bag" />
+  <param name="record_file_path" type="str" value="$(find force_tracking)/record/" />
+  <param name="ur_prefix" type="str" value="$(arg prefix)" />
+
+
+
+  <!-- TF Buffer Server -->
+  <node pkg="tf2_ros" type="buffer_server" name="tf2_buffer_server">
+      <param name="buffer_size" value="120.0"/>
+  </node>
+
+  <node name="rviz_ur3" pkg="rviz" type="rviz" args="-d $(find force_tracking)/config/ur3.rviz"/>
+
+</launch>

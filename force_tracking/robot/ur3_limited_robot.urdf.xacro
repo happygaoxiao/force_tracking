@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+       name="ur3_force_guide" >
+
+<property name="pi" value="3.14159265"/>
+
+  <!-- common stuff -->
+  <xacro:include filename="$(find force_tracking)/description/common/common.gazebo.xacro" />
+
+  <!-- include urdf -->
+  <xacro:include filename="$(find force_tracking)/description/ur3/ur3.urdf.xacro" />
+  <xacro:include filename="$(find force_tracking)/description/sensor/optoforce.urdf.xacro" />
+
+  <!-- robot arm : display the arm by setting prefix -->
+  <xacro:ur3_robot prefix="" joint_limited="true"/>
+  <xacro:optoforce prefix=""/>
+
+<!-- joint -->
+<link name="world"/>
+
+<joint name="base_link_world_fixed_joint" type="fixed">
+  <parent link="world"/>
+  <child link="base_link"/>
+  <origin xyz="0 0 0" rpy="${pi} 0 0"/>
+  <!--  <origin xyz="0 0 0" rpy="${pi} 0 0"/>-->
+</joint>
+
+
+</robot>

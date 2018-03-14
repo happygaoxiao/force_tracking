@@ -1,0 +1,8 @@
+contact_desire_force: 2
+demo_fx: -1
+demo_fy: -1
+xyz_vel_factor: [0.005, 0.005, 0.005]
+rot_vel_factor: [0.35, 0.35, 0.35]
+base_world_RPY: [0, 0, 0]
+ef_wrench_factor: 0.2
+ef_twist_factor: 0.1

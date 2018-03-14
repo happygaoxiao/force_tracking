@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <property name="pi" value="3.14159265"/>
+
+    <xacro:macro name="ur10_base_support" params="prefix">
+
+        <link name="${prefix}support">
+        <visual>
+        <origin rpy="0 0 0" xyz=" 0 0 0"/>
+          <geometry>
+            <mesh filename="package://force_leader_follower/description/support/visual/ur10_base.dae" />
+          </geometry>
+          <material name = "gray">
+            <color rgba = "0.4 0.4 0.4 1"/>
+        </material>
+        </visual>
+        <collision>
+        <origin rpy="0 0 0" xyz=" 0 0 0"/>
+          <geometry>
+            <mesh filename="package://force_leader_follower/description/support/collision/ur10_base.stl" />
+          </geometry>
+        </collision>
+        </link>
+
+    </xacro:macro>
+</robot>

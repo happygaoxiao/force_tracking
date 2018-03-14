@@ -1,0 +1,31 @@
+contact_desire_force: 2
+demo_fx: -1
+demo_fy: -1
+xyz_vel_factor: [0.03, 0.03, 0.02]
+rot_vel_factor: [0.3, 0.3, 0.3]
+base_world_RPY: [0, 0, 0]
+ef_wrench_factor: 0.2
+ef_twist_factor: 0.04
+ef_joint_factor_: 0.8
+force_range0: 4
+force_range1: 50
+#1 changed to 0.3
+torque_range: 0.3
+period_time: 0.006
+gravity_up_joints: [-140, -90, -90, -90, -90, 0]
+gravity_down_joints: [-140, -90, -90, -90, 90, 0]
+middle_jnt_: [-140, -90, -90, -90, 0, 0]
+test_joints: [-110,-99.73,-124.53,-45.53,90.07,-29.20]
+# middle with spring
+#pid_: [4, 3, 3]
+pid_: [5, 4, 3]
+#force_PID_loop : [0.005,0.0005,0.01]
+force_PID_loop: [0.08,0.30, 0.001]
+
+name_suffix: 5003
+plane_angle: 135
+
+#row_Y: 784
+#col_Y: 15
+
+positions: [240, -90, -90, -90, -90, 0]

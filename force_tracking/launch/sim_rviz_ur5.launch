@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="limited" default="false"/>
+
+
+<!-- robot model -->
+<param unless="$(arg limited)" name="robot_description" command="$(find xacro)/xacro.py '$(find force_tracking)/robot/ur5_robot.urdf.xacro'" />
+<param if="$(arg limited)" name="robot_description" command="$(find xacro)/xacro.py '$(find force_tracking)/robot/ur5_limited_robot.urdf.xacro'" />
+
+<!-- env param -->
+<include file="$(find force_tracking)/launch/env_param.launch"/>
+
+<!--for sim-->
+ <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+    <param name="use_gui" value="true"/>
+  </node>
+<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+<!--for sim-->
+
+
+<!--  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find urdf_tutorial)/urdf.rviz" />-->
+
+<node name="rviz_ur5" pkg="rviz" type="rviz" args="-d $(find force_tracking)/config/ur5.rviz"/>
+
+
+</launch>
